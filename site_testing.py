@@ -3,8 +3,10 @@ import sys
 import subprocess
 
 _tests = {
-    'find_link': '- <url>, <link>'
+    'find_link': '- <url>, <link>',
+    'find_forms': '- <url>',
 }
+
 
 class Test(object):
 
