@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from requests_html import HTMLSession
 import sys
-from urllib.parse import urljoin
 
 
 class Forms(object):
@@ -14,6 +13,7 @@ class Forms(object):
         forms = self.get_all_forms()
         if len(forms) == 0:
             print(f"There no forms in site {self.url}")
+            return None
         else:
             print(f"{self.url} site's forms: ")
         form_details = {}
@@ -37,7 +37,8 @@ class Forms(object):
         res = self.session.get(self.url)
         # for javascript driven website
         # res.html.render()
-        soup = BeautifulSoup(res.html.html, "html.parser")
+        #soup = bs(s.get(url).content, "html.parser")
+        soup = BeautifulSoup(self.session.get(self.url).content, "html.parser")
         return soup.find_all("form")
 
     def get_forms_details(self, form):
@@ -60,8 +61,8 @@ class Forms(object):
 
 def main():
     session = HTMLSession()
-    injection = Forms(session, sys.argv[1])
-    injection.search_forms()
+    forms = Forms(session, sys.argv[1])
+    forms.search_forms()
 
 
 if __name__ == '__main__':
