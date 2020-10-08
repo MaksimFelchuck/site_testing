@@ -5,6 +5,8 @@ import subprocess
 _tests = {
     'find_link': '- <url>, <link>',
     'find_forms': '- <url>',
+    'XSS_Vulnerability_Scanner': '- <url>',
+    'SQL_Injection_Scanner': '- <url>',
 }
 
 
@@ -15,7 +17,7 @@ class Test(object):
         self.args = args
 
     def run_test(self):
-        proc = subprocess.Popen(['py', self.test_name + '.py'] + self.args, stdout=subprocess.PIPE,
+        proc = subprocess.Popen(['py', f'tests/{self.test_name}.py'] + self.args, stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
         stdout, stderr = proc.communicate()
         stdout = stdout.decode('utf-8')
