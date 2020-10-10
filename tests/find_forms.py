@@ -34,10 +34,6 @@ class Forms(object):
         return form_details
 
     def get_all_forms(self):
-        res = self.session.get(self.url)
-        # for javascript driven website
-        # res.html.render()
-        #soup = bs(s.get(url).content, "html.parser")
         soup = BeautifulSoup(self.session.get(self.url).content, "html.parser")
         return soup.find_all("form")
 

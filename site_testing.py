@@ -6,7 +6,8 @@ _tests = {
     'find_link': '- <url>, <link>',
     'find_forms': '- <url>',
     'XSS_Vulnerability_Scanner': '- <url>',
-    'SQL_Injection_Scanner': '- <url>',
+    'SQL_Injectipon_Scanner': '- <url>',
+    'doctype_check': '- <url>',
 }
 
 
