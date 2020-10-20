@@ -8,7 +8,8 @@ _tests = {
     'XSS_Vulnerability_Scanner': '- <url>',
     'SQL_Injectipon_Scanner': '- <url>',
     'doctype_check': '- <url>',
-    'page_load_speed': '- <url>'
+    'page_load_speed': '- <url>',
+    'check_link': '- <url>, [links]',
 }
 
 
