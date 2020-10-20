@@ -1,3 +1,10 @@
+"""
+find_forms - function to find forms:
+
+Usage: find_forms <url>
+
+    <url> - url where finding forms
+"""
 from bs4 import BeautifulSoup
 from requests_html import HTMLSession
 import sys
@@ -56,6 +63,9 @@ class Forms(object):
 
 
 def main():
+    if sys.argv[1] == '-h' or '--help':
+        print(__doc__)
+        sys.exit(0)
     session = HTMLSession()
     forms = Forms(session, sys.argv[1])
     forms.search_forms()

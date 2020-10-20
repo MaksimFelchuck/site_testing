@@ -1,3 +1,10 @@
+"""
+SQL_injection_Scanner - function to check site on SQL injection attack vulnerability:
+
+Usage: SQL_injection_Scanner <url>
+
+    <url> - url where checking SQL injection attack vulnerability
+"""
 import sys
 import requests
 from find_forms import Forms
@@ -65,6 +72,9 @@ class Injection(object):
 
 
 def main():
+    if sys.argv[1] == '-h' or '--help':
+        print(__doc__)
+        sys.exit(0)
     injection = Injection(sys.argv[1])
     injection.scan()
 

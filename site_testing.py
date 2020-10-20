@@ -47,17 +47,28 @@ def use_as_os_command():
     parser.usage = use_as_os_command.__doc__
     args = parser.parse_args()
     if args.help:
-        print('usage: ' + use_as_os_command.__doc__)
-        sys.exit(0)
+        if args.test_name:
+            if not args.test_name in _tests:
+                print('\nthis test doesnt exist\n')
+                print('usage: ' + use_as_os_command.__doc__)
+                sys.exit(3)
+            else:
+                test = Test(args.test_name, ["-h"])
+                sys.exit(test.run_test())
+        else:
+            print('usage: ' + use_as_os_command.__doc__)
+            sys.exit(0)
     if args.tests:
         print('\ntests: \n')
         for test, descr in _tests.items():
             print(test, descr)
+        print("\ninput <test_name> -help to get test information")
         sys.exit(0)
     if not args.test_name in _tests:
         print('\nthis test doesnt exist\n')
         print('usage: ' + use_as_os_command.__doc__)
         sys.exit(3)
+
     test = Test(args.test_name, args.args)
     sys.exit(test.run_test())
 

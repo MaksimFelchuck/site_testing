@@ -1,7 +1,14 @@
-import time
+"""
+check_link - function to check links works:
 
-from selenium import webdriver
+Usage: check_link <url> [links]
+
+    <url> - url where checking links
+    [links] - links to check. check link1 -> check link2 -> ...
+"""
 import sys
+import time
+from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 
 
@@ -33,6 +40,9 @@ class TestParser(object):
 
 
 def main():
+    if sys.argv[1] == '-h' or '--help':
+        print(__doc__)
+        sys.exit(0)
     driver = webdriver.Chrome()
     args = []
     for arg in range(2, len(sys.argv)):

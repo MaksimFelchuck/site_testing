@@ -1,3 +1,10 @@
+"""
+page_load_speed - function to check site load speed:
+
+Usage: page_load_speed <url>
+
+    <url> - url where checking load speed
+"""
 import sys
 import time
 
@@ -19,6 +26,9 @@ def page_load_time(link):
 
 
 def main():
+    if sys.argv[1] == '-h' or '--help':
+        print(__doc__)
+        sys.exit(0)
     backendPerformance_calc, frontendPerformance_calc = page_load_time(sys.argv[1])
     print(f"Back End: {backendPerformance_calc}ms")
     print(f"Front End: {frontendPerformance_calc}ms")

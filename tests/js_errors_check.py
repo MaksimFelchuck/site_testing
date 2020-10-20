@@ -1,7 +1,13 @@
+"""
+js_errors_check - function to check there any js errors on the site:
+
+Usage: js_errors_check <url>
+
+    <url> - url where checking js errors
+"""
 import sys
 from selenium import webdriver
 import logging
-
 from selenium.common.exceptions import WebDriverException
 
 
@@ -22,6 +28,9 @@ def check_browser_errors(driver):
 
 
 def main():
+    if sys.argv[1] == '-h' or '--help':
+        print(__doc__)
+        sys.exit(0)
     driver = webdriver.Chrome()
     driver.get(sys.argv[1])
     errors = check_browser_errors(driver)
