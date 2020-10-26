@@ -5,8 +5,8 @@ import subprocess
 _tests = {
     'find_link': '- <url>, <link>',
     'find_forms': '- <url>',
-    'XSS_Vulnerability_Scanner': '- <url>',
-    'SQL_Injectipon_Scanner': '- <url>',
+    'xss_vulnerability_scanner': '- <url>',
+    'sql_injection_scanner': '- <url>',
     'doctype_check': '- <url>',
     'page_load_speed': '- <url>',
     'check_link': '- <url>, [links]',
@@ -23,7 +23,7 @@ class Test(object):
         proc = subprocess.Popen(['py', f'tests/{self.test_name}.py'] + self.args, stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
         stdout, stderr = proc.communicate()
-        stdout = stdout.decode('utf-8')
+        stdout = stdout.decode('latin-1')
         stderr = stderr.decode('utf-8')
         status = proc.poll()
         if stderr:
