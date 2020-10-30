@@ -63,7 +63,7 @@ def main():
 
         <url> - url where checking load speed
     """
-    if sys.argv[1] == '-h' or '--help':
+    if sys.argv[1] == '-h':
         print(__doc__)
         sys.exit(0)
     backend_performance_calc, frontend_performance_calc = page_load_time(sys.argv[1])
