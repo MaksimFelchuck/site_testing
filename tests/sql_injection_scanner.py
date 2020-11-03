@@ -98,9 +98,9 @@ class Injection():
                     elif input_tag["type"] != "submit":
                         data[input_tag["name"]] = f"test{symbol}"
             url = urljoin(self.url, detail["action"])
-            if detail["method"] == "post":
+            if detail["method"] == "POST" or "post":
                 res = session.post(url, data=data)
-            elif detail["method"] == "get":
+            elif detail["method"] == "GET" or "get":
                 res = session.get(url, params=data)
             if _is_vulnerable(res):
                 is_vulnerable = True
