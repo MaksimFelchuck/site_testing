@@ -3,13 +3,13 @@ import sys
 import subprocess
 
 _tests = {
-    'find_link': '- <url>, <link>',
-    'find_forms': '- <url>',
-    'xss_vulnerability_scanner': '- <url>',
-    'sql_injection_scanner': '- <url>',
-    'doctype_check': '- <url>',
-    'page_load_speed': '- <url>',
-    'check_link': '- <url>, [links]',
+    'find_link': ['url', 'link'],
+    'find_forms': ['url'],
+    'xss_vulnerability_scanner': ['url'],
+    'sql_injection_scanner': ['url'],
+    'doctype_check': ['url'],
+    'page_load_speed': ['url'],
+    'check_link': ['url', '[links]'],
 }
 
 

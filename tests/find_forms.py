@@ -77,8 +77,8 @@ class Forms():
             print(f"There no forms in site {self.url}")
             return None
 
-        print(f"{self.url} site's forms: ")
         form_details = {}
+        print(f"There {len(forms)} form(s) on site {self.url}")
         for form in forms:
             details = get_forms_details(form)
             form_details[form] = details
