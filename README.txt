@@ -11,5 +11,5 @@ Python library's needed to install:
     -requests
     -pprint
 
-Need to download webdriver for Chrome: https://chromedriver.chromium.org/downloads
+Need to download webdriver for Chrome (chromedriver_linux64.zip): https://chromedriver.chromium.org/downloads
 Place "chromedriver.exe" in root folder.
