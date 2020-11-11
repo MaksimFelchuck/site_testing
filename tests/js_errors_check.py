@@ -35,6 +35,7 @@ import sys
 import logging
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.chrome.options import Options
 
 
 def check_browser_errors(driver):
@@ -68,7 +69,11 @@ def main():
     if sys.argv[1] == '-h':
         print(__doc__)
         sys.exit(0)
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome("chromedriver", options=chrome_options)
     driver.get(sys.argv[1])
     errors = check_browser_errors(driver)
     if len(errors) > 0:

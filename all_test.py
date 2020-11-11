@@ -18,7 +18,7 @@ def run_tests(url, test_name):
     """
     function to run tests
     """
-    proc = subprocess.Popen(['py', f'tests/{test_name}.py', url], stdout=subprocess.PIPE,
+    proc = subprocess.Popen(['python3', f'tests/{test_name}.py', url], stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE)
     stdout, stderr = proc.communicate()
     stdout = stdout.decode('latin-1')
