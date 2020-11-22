@@ -77,6 +77,7 @@ def main():
     driver.get(sys.argv[1])
     errors = check_browser_errors(driver)
     if len(errors) > 0:
+        print('Theres js errors: \n')
         print(*errors, sep='\n')
     else:
         print('No js errors')

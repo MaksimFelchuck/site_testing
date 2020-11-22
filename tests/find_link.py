@@ -34,7 +34,7 @@ Usage: find_link <url> <link_name>
 """
 import sys
 from selenium import webdriver
-
+from selenium.webdriver.chrome.options import Options
 
 class TestParser():
     """
@@ -87,7 +87,11 @@ def main():
     if sys.argv[1] == '-h':
         print(__doc__)
         sys.exit(0)
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome("chromedriver", options=chrome_options)
     parser = TestParser(driver, sys.argv[1], sys.argv[2])
     parser.parse()
 

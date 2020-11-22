@@ -3,13 +3,6 @@ Enter the name of the test, the site's url you want to test and arguments (if ne
 
 If needed to run all tests use program "all_test.py". Enter site's url.
 
-Python library's needed to install:
-    -bs4
-    -subprocess
-    -selenium
-    -requests_html
-    -requests
-    -pprint
 
 Need to download webdriver for Chrome: https://chromedriver.chromium.org/downloads
-Place "chromedriver.exe" in root folder.
+Place "chromedriver" in root folder.

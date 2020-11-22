@@ -36,7 +36,7 @@ import sys
 import time
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
-
+from selenium.webdriver.chrome.options import Options
 
 class TestParser():
     """
@@ -88,7 +88,11 @@ def main():
     if sys.argv[1] == '-h':
         print(__doc__)
         sys.exit(0)
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome("chromedriver", options=chrome_options)
     args = []
     for arg in range(2, len(sys.argv)):
         args.append(sys.argv[arg])

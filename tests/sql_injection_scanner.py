@@ -36,19 +36,22 @@ from urllib.parse import urljoin
 from pprint import pprint
 import requests
 from find_forms import Forms
+import xml.etree.ElementTree as ET
 
+_tree = ET.parse('tests/sql_errors.xml')
+_root = _tree.getroot()
+_errors = []
+for db in _root.findall("dbms"):
+    for error in db.findall("error"): 
+        _errors.append(error.attrib["regexp"])
+    
 
 def _is_vulnerable(response):
-    errors = {
-        "you have an error in your sql syntax;",
-        "warning: mysql",
-        "unclosed quotation mark after the character string",
-        "quoted string not properly terminated",
-        "supplied argument is not a valid mysql result resource in"
-    }
-    for error in errors:
-        if error in response.content.decode("latin-1").lower():
+
+    for error in _errors:
+        if error in response.content.decode("latin-1"):
             return True
+        
     return False
 
 
@@ -99,9 +102,12 @@ class Injection():
                         data[input_tag["name"]] = f"test{symbol}"
             url = urljoin(self.url, detail["action"])
             if detail["method"] == "POST" or "post":
+                print(data)
                 res = session.post(url, data=data)
+                print(res.content)
             elif detail["method"] == "GET" or "get":
                 res = session.get(url, params=data)
+            
             if _is_vulnerable(res):
                 is_vulnerable = True
                 print("SQL Injection vulnerability detected, link:", url)
@@ -126,7 +132,7 @@ def main():
         sys.exit(0)
     injection = Injection(sys.argv[1])
     injection.scan()
-
+    
 
 if __name__ == '__main__':
     main()

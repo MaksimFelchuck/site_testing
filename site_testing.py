@@ -10,6 +10,7 @@ _tests = {
     'doctype_check': ['url'],
     'page_load_speed': ['url'],
     'check_link': ['url', '[links]'],
+    'js_errors_check': ['url']
 }
 
 
@@ -20,7 +21,7 @@ class Test(object):
         self.args = args
 
     def run_test(self):
-        proc = subprocess.Popen(['py', f'tests/{self.test_name}.py'] + self.args, stdout=subprocess.PIPE,
+        proc = subprocess.Popen(['python', f'tests/{self.test_name}.py'] + self.args, stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
         stdout, stderr = proc.communicate()
         stdout = stdout.decode('latin-1')
