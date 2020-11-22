@@ -4,5 +4,10 @@ Enter the name of the test, the site's url you want to test and arguments (if ne
 If needed to run all tests use program "all_test.py". Enter site's url.
 
 
+<<<<<<< HEAD
 Need to download webdriver for Chrome: https://chromedriver.chromium.org/downloads
 Place "chromedriver" in root folder.
+=======
+Need to download webdriver for Chrome (chromedriver_linux64.zip): https://chromedriver.chromium.org/downloads
+Place "chromedriver.exe" in root folder.
+>>>>>>> d70930046adf93b7db6195c23108d4b88bbe2003
