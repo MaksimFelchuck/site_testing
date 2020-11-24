@@ -1,3 +1,4 @@
 debug.log
 chromedriver
 venv/
+__pycache__/

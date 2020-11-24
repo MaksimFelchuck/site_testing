@@ -1,0 +1,32 @@
+
+version: "3"
+
+services:
+
+  server:
+
+    build: .
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - .:/server
+
+    environment:
+      FLASK_ENV: development
+      
+  redis:
+    image: "redis:alpine"
+
+  
+  client:
+
+
+    build: client/
+
+    network_mode: host
+
+ 
+    depends_on:
+      - server
